@@ -7,18 +7,17 @@ terraform {
   }
 }
 
-provider "google" {
-  project = var.gcp_project_id
-}
+provider "google" {}
 
 
 resource "google_container_cluster" "gke" {
-  name               = var.cluster_name
+  name               = var.gke_cluster_name
   location           = "europe-west2-a"
   initial_node_count = 1
 }
 
-variable "cluster_name" {}
+variable "gke_cluster_name" {}
+
 
 output "gke_cluster_id" {
     value = google_container_cluster.gke.id
