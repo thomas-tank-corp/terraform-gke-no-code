@@ -10,6 +10,7 @@ terraform {
     workspaces {
       tags = ["gcp"]
     }
+  } 
 }
 
 
