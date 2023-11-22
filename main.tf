@@ -5,17 +5,10 @@ terraform {
       version = "4.33.0"
     }  
   }
-    
-  cloud {
-    organization = "tom-se-hashi"
-    workspaces {
-      tags = ["gcp"]
-    }
-  } 
-}
-
-
+  
 provider "google" {}
+
+resource "random_pet" "name" {}
 
 
 resource "google_container_cluster" "gke" {
@@ -24,7 +17,9 @@ resource "google_container_cluster" "gke" {
   initial_node_count = 1
 }
 
-variable "gke_cluster_name" {}
+variable "gke_cluster_name" {
+  default = "gke-dev-${random_pet.name.id}"
+}
 
 
 output "gke_cluster_id" {
