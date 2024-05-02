@@ -20,7 +20,7 @@ resource "google_container_cluster" "gke" {
 
 variable "location" {}
 
-Variable "node_count" {}
+variable "node_count" {}
 
 
 output "gke_cluster_id" {
