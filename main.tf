@@ -14,10 +14,13 @@ resource "random_pet" "name" {}
 
 resource "google_container_cluster" "gke" {
   name               = "gke-dev-${random_pet.name.id}"
-  location           = "europe-west2-a"
-  initial_node_count = 1
+  location           = var.location
+  initial_node_count = var.node_count
 }
 
+variable "location" {}
+
+Variable "node_count" {}
 
 
 output "gke_cluster_id" {
